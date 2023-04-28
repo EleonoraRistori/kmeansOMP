@@ -83,7 +83,8 @@ void kmeans(float* data_points, float* centroids, int* cluster_assignment, int n
         }
 
         // Ricalcolo dei centroidi
-#pragma omp parallel for num_threads(num_threads) default(none) firstprivate(num_data_points, data_point_dim, num_centroids, data_points, cluster_assignment) shared(centroids, old_centroids)
+#pragma omp parallel for num_threads(num_threads) default(none) firstprivate(num_data_points, data_point_dim, \
+num_centroids, data_points, cluster_assignment) shared(centroids, old_centroids)
         for(int centroid_id=0; centroid_id<num_centroids; centroid_id++){
             for (int dim = 0; dim < data_point_dim; dim++) {
                 int num_points_assigned = 0;

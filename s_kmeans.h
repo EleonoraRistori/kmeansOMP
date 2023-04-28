@@ -5,7 +5,7 @@
 #ifndef KMEANSOMP_S_KMEANS_H
 #define KMEANSOMP_S_KMEANS_H
 
-void initialize_centroids(int data_point_dim, float* centroids, float *data_points, int k, float threshold){
+void initialize_centroids(int data_point_dim, float* centroids, const float *data_points, int k, float threshold){
     for(int dim=0; dim<data_point_dim; dim++){
         centroids[dim] = data_points[dim];
     }
