@@ -16,14 +16,14 @@
 void generateCluster(int num_points,int data_point_dim, int k, float sigma, float*data_points, float*centroids){
     //Assigning centroids
     for(int dim=0; dim<data_point_dim; dim++){
-        centroids[dim] = float(std::rand()) / RAND_MAX *100*k;
+        centroids[dim] = float(std::rand()) / RAND_MAX *sigma*sigma*k;
     }
     int num_assigned_centroids = 1;
 
     while(num_assigned_centroids != k){
 
         for(int dim=0; dim<data_point_dim; dim++){
-            centroids[num_assigned_centroids*data_point_dim+dim] =  float(std::rand()) / RAND_MAX *100*k;
+            centroids[num_assigned_centroids*data_point_dim+dim] =  float(std::rand()) / RAND_MAX *sigma*sigma*k;
         }
         int centroid_id = 0;
         float sum_distances;
@@ -34,7 +34,7 @@ void generateCluster(int num_points,int data_point_dim, int k, float sigma, floa
                 sum_distances += diff*diff;
             }
             centroid_id++;
-        }while(centroid_id < num_assigned_centroids && sum_distances > sigma*sigma*100);
+        }while(centroid_id < num_assigned_centroids && sum_distances > sigma*sigma);
         if(centroid_id == num_assigned_centroids){
             num_assigned_centroids++;
         }
