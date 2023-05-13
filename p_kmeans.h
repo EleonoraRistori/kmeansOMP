@@ -60,7 +60,6 @@ void kmeans(float* data_points, float* centroids, int* cluster_assignment, int n
     initialize_centroids_p(data_point_dim, centroids, data_points, num_centroids, 100);
     float* old_centroids = new float[num_centroids * data_point_dim];
     int iteration = 0;
-    float distance = 0;
     do {
         // Assegnazione dei punti ai centroidi
 #pragma omp parallel for num_threads(num_threads) default(none) firstprivate(num_data_points, data_point_dim, num_centroids, data_points, centroids) shared(cluster_assignment)
